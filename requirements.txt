@@ -7,3 +7,4 @@ wget
 dask
 holoviews
 ccxt
+bt
