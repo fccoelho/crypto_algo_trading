@@ -67,4 +67,4 @@ docs/_build/
 # PyBuilder
 target/
 
-
+.idea/

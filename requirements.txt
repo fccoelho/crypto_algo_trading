@@ -2,4 +2,8 @@ requests
 bitfinex
 pandas
 backtrader
+keras
+wget
+dask
 holoviews
+ccxt

@@ -1,4 +1,7 @@
 u"""
+Neural Network based trading algorithm 
+trained with reinforcement learning
+
 Created on 23/03/16
 by fccoelho
 license: GPL V3 or Later
