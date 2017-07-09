@@ -1,5 +1,5 @@
 requests
-bitfinex
+git+git://github.com/fccoelho/bitfinex.git#egg=bitfinex
 pandas
 backtrader
 keras
