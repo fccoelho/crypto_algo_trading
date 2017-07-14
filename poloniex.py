@@ -33,7 +33,7 @@ def get_price_table(pair, start, end):
     df = df.resample('1T').mean()  # resample in windows of 1 minute
     df[pair] = df.rate
     for cname in df.columns:
-        if cname not in pairs:
+        if cname != pair:
             del df[cname]
 
     return df
