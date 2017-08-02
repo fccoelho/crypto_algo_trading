@@ -6,11 +6,16 @@ license: GPL V3 or Later
 
 import pandas as pd
 import datetime
+import sqlalchemy
 
 
 def get_full_table(pair, start, end):
     """
     Gets at most 300000 raw trades
+    Trade history records look like this:
+        [{"date":"2014-02-10 04:23:23","type":"buy","rate":"0.00007600","amount":"140","total":"0.01064"},{"date":"2014-02-10 01:19:37","type":"buy","rate":"0.00007600","amount":"655","total":"0.04978"}, ... ]
+
+
     """
     df = pd.read_json(
         'https://poloniex.com/public?command=returnTradeHistory&currencyPair={}&start={}&end={}'.format(pair, int(
@@ -66,7 +71,7 @@ def extend_history(pair, df):
     df = df.append(dfextra)  # pd.concat([df,dfextra], axis=0)
     return df
 
-def get_ohlc(pair, start, end):
+def get_ohlc(pair, start, end, dbout=False):
     """
     Gets OHLC historical data aggregated in 5-minute candlesticks
     :param pair: Currency pair, e.g. USDT_ETH
@@ -79,5 +84,8 @@ def get_ohlc(pair, start, end):
                                                                                                           int(start.timestamp()),
                                                                                                           int(end.timestamp()))
     df = pd.read_json(url)
+    df.date = pd.to_datetime(df.date)
     df.set_index(['date'], inplace=True)
+    if dbout:
+        conn = sqlalchemy.create_engine("sqlite")
     return df

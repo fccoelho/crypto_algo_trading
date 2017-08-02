@@ -9,5 +9,6 @@ holoviews
 ccxt
 bt
 seaborn
+sqlalchemy
 
 
