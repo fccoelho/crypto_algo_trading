@@ -1,4 +1,6 @@
 u"""
+fetch data from Poloniex Exchange
+
 Created on 14/07/17
 by fccoelho
 license: GPL V3 or Later
