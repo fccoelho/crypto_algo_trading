@@ -81,5 +81,6 @@ def get_ohlc(pair, start, end):
                                                                                                           int(start.timestamp()),
                                                                                                           int(end.timestamp()))
     df = pd.read_json(url)
+    df['date'] = pd.to_datetime(df.date)
     df.set_index(['date'], inplace=True)
     return df

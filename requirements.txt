@@ -9,5 +9,7 @@ holoviews
 ccxt
 bt
 seaborn
-
+pyfolio
+bokeh
+statsmodels
 
