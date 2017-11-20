@@ -12,4 +12,5 @@ seaborn
 pyfolio
 bokeh
 statsmodels
+ffn
 
