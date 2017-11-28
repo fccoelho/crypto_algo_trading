@@ -13,4 +13,6 @@ pyfolio
 bokeh
 statsmodels
 ffn
+pipenv
+jupyter_dashboards
 
