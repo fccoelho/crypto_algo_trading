@@ -1,0 +1,30 @@
+[[source]]
+
+url = "https://pypi.python.org/simple"
+verify_ssl = true
+name = "pypi"
+
+
+[packages]
+
+requests = "*"
+bitfinex = {git = "git://github.com/fccoelho/bitfinex.git"}
+pandas = "*"
+backtrader = "*"
+Keras = "*"
+wget = "*"
+dask = "*"
+holoviews = "*"
+ccxt = "*"
+bt = "*"
+seaborn = "*"
+pyfolio = "*"
+bokeh = "*"
+statsmodels = "*"
+ffn = "*"
+pipenv = "*"
+jupyter-dashboards = "*"
+
+
+[dev-packages]
+
