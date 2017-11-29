@@ -11,7 +11,7 @@ requests = "*"
 bitfinex = {git = "git://github.com/fccoelho/bitfinex.git"}
 pandas = "*"
 backtrader = "*"
-Keras = "*"
+keras = "*"
 wget = "*"
 dask = "*"
 holoviews = "*"
@@ -24,6 +24,7 @@ statsmodels = "*"
 ffn = "*"
 pipenv = "*"
 jupyter-dashboards = "*"
+codernitydb = "*"
 
 
 [dev-packages]

@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "ccbbc8dd80542ba5cf2b4d1aa57709b59238b61a9691236470d3a24637bb6b92"
+            "sha256": "b24095618639e1a6a833011f7377899b822b9dffeb4c76788273104c2ac7e06b"
         },
         "host-environment-markers": {
             "implementation_name": "cpython",
@@ -88,9 +88,9 @@
         },
         "bokeh": {
             "hashes": [
-                "sha256:6465fae82e94223f16584645b38d34a73d95712870f29c0244649c2cbf2c8393"
+                "sha256:d29b544dd4576900774773a951bf61e2e0a0456d0b065baf48cbf30a8e0c0e95"
             ],
-            "version": "==0.12.10"
+            "version": "==0.12.11"
         },
         "bottleneck": {
             "hashes": [
@@ -131,10 +131,10 @@
         },
         "ccxt": {
             "hashes": [
-                "sha256:b44d98a20596181dc87471ce6e30ecf7e01212e12f4f16d738776c72762cba8f",
-                "sha256:a353c29925ded6543fb8d4abd8ebf9c5196117058013bb1071f0e5d5a024afcd"
+                "sha256:ec58dcbdca112888020e2cf34bfa48f3bcce4bb0c80f3b6565ef9ffd3c22a911",
+                "sha256:8577db054f34a7be5778533c9cc4aea4e0c303d4df8c65bdc5e3678c6819aa8a"
             ],
-            "version": "==1.10.232"
+            "version": "==1.10.251"
         },
         "certifi": {
             "hashes": [
@@ -149,6 +149,12 @@
                 "sha256:84ab92ed1c4d4f16916e05906b6b75a6c0fb5db821cc65e70cbd64a3e2a5eaae"
             ],
             "version": "==3.0.4"
+        },
+        "codernitydb": {
+            "hashes": [
+                "sha256:8a7e83d98a9fcc40653a3773895b5e210a2ef32d5ad5a6475da44845c80cc33e"
+            ],
+            "version": "==0.5.0"
         },
         "cycler": {
             "hashes": [
@@ -506,7 +512,6 @@
                 "sha256:e8c43b5eee76b2083a9badde89fd1bbce6c8942d1045146e100b7b5e014f4f1a",
                 "sha256:e64193f0047ad603b71f202332ab5527c5e52aa7c8b609704fc28c0dc20c4365"
             ],
-            "markers": "os_name != 'nt'",
             "version": "==0.5.2"
         },
         "pycares": {
@@ -769,11 +774,11 @@
         },
         "terminado": {
             "hashes": [
-                "sha256:a32546459dcb3bf4e6648d77126d1f282d0c59ff6d62f077851e4dbb502f5b03",
-                "sha256:984c914303fcd1642c1783cdc6727db24b0bc1494fa6363e6ae46696335e2944"
+                "sha256:65011551baff97f5414c67018e908110693143cfbaeb16831b743fe7cad8b927",
+                "sha256:55abf9ade563b8f9be1f34e4233c7b7bde726059947a593322e8a553cc4c067a"
             ],
             "markers": "sys_platform != 'win32'",
-            "version": "==0.8"
+            "version": "==0.8.1"
         },
         "testpath": {
             "hashes": [
