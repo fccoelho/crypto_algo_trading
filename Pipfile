@@ -25,6 +25,7 @@ ffn = "*"
 pipenv = "*"
 jupyter-dashboards = "*"
 codernitydb = "*"
+python-decouple = "*"
 
 
 [dev-packages]
