@@ -6,7 +6,6 @@ license: GPL V3 or Later
 
 import pandas as pd
 import datetime
-import sqlalchemy
 
 
 def get_full_table(pair, start, end):
@@ -71,7 +70,7 @@ def extend_history(pair, df):
     df = df.append(dfextra)  # pd.concat([df,dfextra], axis=0)
     return df
 
-def get_ohlc(pair, start, end, dbout=False):
+def get_ohlc(pair, start, end, save=False):
     """
     Gets OHLC historical data aggregated in 5-minute candlesticks
     :param pair: Currency pair, e.g. USDT_ETH
@@ -86,6 +85,6 @@ def get_ohlc(pair, start, end, dbout=False):
     df = pd.read_json(url)
     df.date = pd.to_datetime(df.date)
     df.set_index(['date'], inplace=True)
-    if dbout:
-        conn = sqlalchemy.create_engine("sqlite")
+    if save:
+        df.to_pickle('{}.pickle')
     return df

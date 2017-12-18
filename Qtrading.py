@@ -12,40 +12,13 @@ license: GPL V3 or Later
 
 from keras.models import Sequential
 from keras.layers.core import Dense, Dropout, Activation
-from keras.optimizers import RMSprop, Adam
+from keras.optimizers import RMSprop, Adam, Nadam
+from keras.callbacks import TensorBoard
 from queue import deque
 import numpy as np
 import random
 import pandas as pd
-
-
-def get_price_history(pair, start, end):
-    """
-    Poloniex API only returns maximum of 300000 trades or 1 year for each pair.
-    :returns:
-    dictionary with one dataframe per pair
-    """
-    print('Downloading {} from {} to {}.'.format(pair, start, end))
-    url = 'https://poloniex.com/public?command=returnTradeHistory&currencyPair={}&start={}&end={}'.format(pair,
-                                                                                                          int(start.timestamp()),
-                                                                                                          int(end.timestamp()))
-    df = pd.read_json(url)
-    df.set_index(['date'], inplace=True)
-    print('fetched {} {} trades.'.format(df.size, pair))
-    df = df.resample('1T').mean()  # resample in windows of 1 minute
-
-    return df
-
-def get_ohlc(pair, start, end):
-    print('Downloading {} from {} to {}.'.format(pair, start, end))
-    url = 'https://poloniex.com/public?command=returnChartData&currencyPair={}&start={}&end={}&period=300'.format(pair,
-                                                                                                          int(start.timestamp()),
-                                                                                                          int(end.timestamp()))
-    df = pd.read_json(url)
-    df.set_index(['date'], inplace=True)
-    return df
-
-
+from poloniex import get_ohlc
 
 
 class DQNAgent:
@@ -57,7 +30,7 @@ class DQNAgent:
         self.action_size = action_size
         self.memory = deque(maxlen=2000)
         self.gamma = 0.95    # discount rate
-        self.epsilon = 1.0  # exploration rate
+        self.epsilon = 0.05  # exploration rate
         self.epsilon_min = 0.01
         self.epsilon_decay = 0.995
         self.learning_rate = 0.001
@@ -71,7 +44,7 @@ class DQNAgent:
         model.add(Dense(164, init='lecun_uniform', input_dim=self.state_size, activation='relu'))
         #model.add(Dropout(0.2)) I'm not using dropout, but maybe you wanna give it a try?
 
-        model.add(Dense(150, init='lecun_uniform', activation=relu))
+        model.add(Dense(150, init='lecun_uniform', activation='relu'))
         #model.add(Dropout(0.2))
 
         # 3 output units, for three possible actions: Buy, Sell, Pass
@@ -80,6 +53,7 @@ class DQNAgent:
 
         # rms = RMSprop()
         model.compile(loss='mse', optimizer=Adam(lr=self.learning_rate))
+        return model
 
     def remember(self, state, action, reward, next_state, done):
         self.memory.append((state, action, reward, next_state, done))
@@ -99,10 +73,40 @@ class DQNAgent:
                                   np.amax(self.model.predict(next_state)[0])
             target_f = self.model.predict(state)
             target_f[0][action] = target
-            self.model.fit(state, target_f, epochs=1, verbose=0)
+            self.model.fit(state, target_f, epochs=1, verbose=0, callbacks=[TB_callback])
         if self.epsilon > self.epsilon_min:
             self.epsilon *= self.epsilon_decay
 
+class Environment:
+    def __init__(self, cash, port):
+        self.cash = [cash]
+        self.port = [port]
+        self.osize = 0.05
+
+    def step(self, action, state):
+        actions = np.array(['buy', 'sell', 'pass'])
+        a = actions[np.argmax(action)]
+        if a == 'buy':
+            new_cash = self.cash[-1] - self.osize * self.cash[-1]
+            new_port = self.port[-1] + (self.osize * self.cash[-1]) / state[0]
+        elif a == 'sell':
+            new_cash = self.cash[-1] + self.port[-1]*self.osize * state[0]
+            new_port = self.port[-1] - self.osize * self.port[-1]
+        else:
+            pass
+        reward = (new_cash-self.cash[-1])+(new_port-self.port[-1]*state[0])
+        if new_cash <= 0:
+            done = True
+        self.cash.append(new_cash)
+        self.port.append(new_port)
+        return np.array([state[0], self.port[-1], self.cash[-1]]), reward, False
+
+TB_callback = TensorBoard(log_dir='./tensorboard',
+                              histogram_freq=0,
+                              write_graph=True,
+                              write_images=True,
+                              # embeddings_freq=10
+                              )
 
 if __name__ == "__main__":
     episodes = 200
@@ -110,27 +114,32 @@ if __name__ == "__main__":
     # Obtain the data
     end = datetime.datetime.now()
     start = end - datetime.timedelta(days=364)
-    data = get_price_history("USDT_BTC", start, end)
+    data = get_ohlc("USDT_BTC", start, end)
+
     # state = [position(T/F), how much, price, market price, volume]
-    agent = DQNAgent(5, 3)
+    agent = DQNAgent(3, 3)
+    initial_cash = 10000
 
     # Iterate the game
     for e in range(episodes):
-
+        env = Environment(initial_cash, 0)
         # reset state in the beginning of each episode
-        # TODO: add balances here
-        state = np.array((data.iloc[0]['rate'], data.iloc[0]['total']))
+        print('Episode: {}'.format(e))
+        total = 0
+        cash = initial_cash
+        state = np.array((data.iloc[0]['close'], total, cash))
 
         # time_t represents each trade in history
-        for time_t in range(500):
+        for time_t in range(len(data)):
 
             # Decide action
             action = agent.act(state)
 
             # Advance the game to the next frame based on the action.
             # Reward is 1 for every frame the pole survived
-            next_state, reward, done, _ = env.step(action)
-            next_state = np.reshape(next_state, [1, 4])
+            next_state, reward, done = env.step(action, state)
+            next_state = np.reshape(next_state, [1, 3])
+            print('Reward: {}'.format(reward))
 
             # Remember the previous state, action, reward, and done
             agent.remember(state, action, reward, next_state, done)
