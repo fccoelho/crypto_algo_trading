@@ -26,6 +26,7 @@ pipenv = "*"
 jupyter-dashboards = "*"
 codernitydb = "*"
 python-decouple = "*"
+influxdb = "*"
 
 
 [dev-packages]
