@@ -12,6 +12,9 @@ Escolha uma exchange e informe ao professor. (Para evitar que todos escolham a m
 
 O seu codigo de captura deve consistir em uma função ou uma classe, capaz de capturar um intervalo de dados de pelo menos um ano, respeitando a taxa de requisições máxima de cada exchange, e que seja capaz de tratar exceções de captura e retomar a captura até completar a tarefa.
 
+### Exchanges escolhidas
+- Bittrex: Luis Henrique
+
 ## Visualização
 Uma vez que já tenha implementado um capturador, construa visualizações interativas de seus dados. Voce pode consultar os notebooks deste repositório para se inspirar, mas precisará construir pelo menos **5 visualizações diferentes** que aplicará aos seus dados. Recomendo a utilização da Biblioteca Holoviews. Mas a escolha é livre.
 
