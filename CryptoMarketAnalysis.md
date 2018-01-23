@@ -16,7 +16,7 @@ O seu codigo de captura deve consistir em uma função ou uma classe, capaz de c
 - Bittrex: Luis Henrique
 - Cryptopia: Bianca Gonçalves Pereira
 - CEX.IO: Artur Chiaperini Grover
--       : Brenda Q. Prallon
+- : Brenda Q. Prallon
 - Poloniex: Guilherme Horta
 - Bitstamp: Marcelo Barata Ribeiro
 - Kraken: Bernardo Bikman
@@ -40,6 +40,7 @@ O seu codigo de captura deve consistir em uma função ou uma classe, capaz de c
 - Bleutrade: Rafael Martins Kovashihara
 - Bittrex: Pedro Issler **REPETIDA, TROCAR**
 - THE ROCK: Daniel Quintão de Moraes
+- HitBTC: João Vítor Amaro
 
 ## Visualização
 Uma vez que já tenha implementado um capturador, construa visualizações interativas de seus dados. Voce pode consultar os notebooks deste repositório para se inspirar, mas precisará construir pelo menos **5 visualizações diferentes** que aplicará aos seus dados. Recomendo a utilização da Biblioteca Holoviews. Mas a escolha é livre.
