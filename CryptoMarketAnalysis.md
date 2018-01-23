@@ -6,7 +6,7 @@ Você pode fazer sua implementação diretamente em um notebook Jupyter. Este no
 ## Captura dos Preços
 Vamos usar aqui a biblioteca [ccxt](https://github.com/ccxt/ccxt) para capturar a série de preços. Consulte a documentação deste pacote para descobrir como realizar o Download. Você pode consultar este [tutorial](https://github.com/fccoelho/crypto_algo_trading/blob/master/CCXT%20tutorial.ipynb) para ter uma breve introdução.
 
-Você deve capturar dados `OHLCV`, ou seja dados de preços, agregados a intervalos de 5 minutos.
+Você deve capturar dados `OHLCV`, ou seja dados de preços, agregados a intervalos de 5 minutos. Se não estiverem disponíveis tente `trades` usando o método `fetch_trades`
 
 Você pode usar o código abaixo para verificar qual Exchange oferece dados `OHLCV`:
 
@@ -25,7 +25,9 @@ for broker in ccxt.exchanges:
 
 ```
 
-Escolha uma exchange e informe ao professor. (Para evitar que todos escolham a mesma). Escolha ao menos dois mercados nesta exchange. Por exemplo: `DASH/USD` e `DASH/EUR`
+Escolha uma exchange e informe ao professor. (Para evitar que todos escolham a mesma). Escolha ao menos dois mercados nesta exchange. Por exemplo: `DASH/USD` e `DASH/EUR`.
+
+Se a `ccxt` não oferecer a captura que você deseja, mas você sabe que é possível obter os dados, implemente a função de captura em um arquivo `<nomedaexchange>.py` e faça um pull-request.
 
 O seu codigo de captura deve consistir em uma função ou uma classe, capaz de capturar um intervalo de dados de pelo menos um ano, respeitando a taxa de requisições máxima de cada exchange, e que seja capaz de tratar exceções de captura e retomar a captura até completar a tarefa.
 
