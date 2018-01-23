@@ -8,6 +8,23 @@ Vamos usar aqui a biblioteca [ccxt](https://github.com/ccxt/ccxt) para capturar 
 
 Você deve capturar dados `OHLCV`, ou seja dados de preços, agregados a intervalos de 5 minutos.
 
+Você pode usar o código abaixo para verificar qual Exchange oferece dados `OHLCV`:
+
+```python
+import ccxt
+
+for broker in ccxt.exchanges:
+    try:
+        exchange = getattr(ccxt, broker)()
+        market = list(exchange.load_markets().keys())[0]
+        exchange.fetch_ohlcv(market)
+        print("\033[92m", broker, " Serves OHLCV data")
+    except Exception as e:
+        print("\033[91m", e)
+        pass
+
+```
+
 Escolha uma exchange e informe ao professor. (Para evitar que todos escolham a mesma). Escolha ao menos dois mercados nesta exchange. Por exemplo: `DASH/USD` e `DASH/EUR`
 
 O seu codigo de captura deve consistir em uma função ou uma classe, capaz de capturar um intervalo de dados de pelo menos um ano, respeitando a taxa de requisições máxima de cada exchange, e que seja capaz de tratar exceções de captura e retomar a captura até completar a tarefa.
