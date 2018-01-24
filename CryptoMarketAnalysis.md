@@ -37,7 +37,7 @@ O seu codigo de captura deve consistir em uma função ou uma classe, capaz de c
 - CEX.IO: Artur Chiaperini Grover
 - : Brenda Q. Prallon
 - Poloniex: Guilherme Horta
-- Bitstamp: Marcelo Barata Ribeiro
+- Kucoin: Marcelo Barata Ribeiro
 - Kraken: Bernardo Bikman
 - Binance: Marcelo Orgler
 - Mercado Bitcoin: Luiz Claudio
