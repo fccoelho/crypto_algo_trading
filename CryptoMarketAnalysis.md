@@ -33,11 +33,12 @@ O seu codigo de captura deve consistir em uma função ou uma classe, capaz de c
 
 ### Exchanges escolhidas
 - Bittrex: Luis Henrique
+- okcoinusd: Franklin Oliveira
 - Cryptopia: Bianca Gonçalves Pereira
 - CEX.IO: Artur Chiaperini Grover
 - : Brenda Q. Prallon
 - Poloniex: Guilherme Horta
-- Bitstamp: Marcelo Barata Ribeiro
+- Kucoin: Marcelo Barata Ribeiro
 - Kraken: Bernardo Bikman
 - Binance: Marcelo Orgler
 - Mercado Bitcoin: Luiz Claudio
@@ -45,7 +46,6 @@ O seu codigo de captura deve consistir em uma função ou uma classe, capaz de c
 - Bitfinex: Daniel Carletti
 - 1BTCXE: Alessandro Tessarollo
 - GDAX: Igor Carvalho
-- TIDEX: Franklin Oliveira
 - Gemini: Felipe Santos
 - Dash: Arthur José Quintão Silva
 - BTCChina: Larissa Machado
