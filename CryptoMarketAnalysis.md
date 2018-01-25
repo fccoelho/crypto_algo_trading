@@ -6,7 +6,7 @@ Você pode fazer sua implementação diretamente em um notebook Jupyter. Este no
 ## Captura dos Preços
 Vamos usar aqui a biblioteca [ccxt](https://github.com/ccxt/ccxt) para capturar a série de preços. Consulte a documentação deste pacote para descobrir como realizar o Download. Você pode consultar este [tutorial](https://github.com/fccoelho/crypto_algo_trading/blob/master/CCXT%20tutorial.ipynb) para ter uma breve introdução.
 
-Você deve capturar dados `OHLCV`, ou seja dados de preços, agregados a intervalos de 5 minutos. Se não estiverem disponíveis tente `trades` usando o método `fetch_trades`
+Você deve capturar dados `OHLCV`, ou seja dados de preços, agregados a intervalos de 5 minutos. Se não estiverem disponíveis tente `trades` usando o método `fetch_trades`. Caso Nenhuma destas streams seja viável de caprutar na exchange escolhida, capture dados de `ticker`, segundo a segundo por pelo menos 24h.
 
 Você pode usar o código abaixo para verificar qual Exchange oferece dados `OHLCV`:
 
@@ -60,6 +60,8 @@ O seu codigo de captura deve consistir em uma função ou uma classe, capaz de c
 - Bittrex: Pedro Issler **REPETIDA, TROCAR**
 - THE ROCK: Daniel Quintão de Moraes
 - HitBTC: João Vítor Amaro
+- YOBit: Lorena Gamboni
+- Gatecoin: Walter Macieira
 
 ## Visualização
 Uma vez que já tenha implementado um capturador, construa visualizações interativas de seus dados. Voce pode consultar os notebooks deste repositório para se inspirar, mas precisará construir pelo menos **5 visualizações diferentes** que aplicará aos seus dados. Recomendo a utilização da Biblioteca Holoviews. Mas a escolha é livre.
