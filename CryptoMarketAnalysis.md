@@ -64,6 +64,7 @@ O seu codigo de captura deve consistir em uma função ou uma classe, capaz de c
 - Gatecoin: Walter Macieira
 
 ### Trabalhos entregues
+Coloque o seu nome e link abaixo, ou escreva [aqui](https://hackmd.io/s/SJBTdp2Sf)
 Marcelo Barata Ribeiro: https://github.com/Marcelobbr/EMAP/tree/master/verao2018
 
 ## Visualização
