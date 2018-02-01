@@ -64,7 +64,7 @@ O seu codigo de captura deve consistir em uma função ou uma classe, capaz de c
 - Gatecoin: Walter Macieira
 - zb: José Valentim Rosa
 - Bitlish: Gabriel Mesquita
-- btcturk: Eduardo Crespo
+- allcoin: Eduardo Crespo
 
 ### Trabalhos entregues
 Coloque o seu nome e link abaixo, ou escreva [aqui](https://hackmd.io/s/SJBTdp2Sf)
