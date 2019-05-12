@@ -81,9 +81,10 @@ def get_ohlc(pair, start, end, save=False):
     :return: dataframe
     """
     print('Downloading {} from {} to {}.'.format(pair, start, end))
-    url = 'https://poloniex.com/public?command=returnChartData&currencyPair={}&start={}&end={}&period=300'.format(pair,
+    url = 'https://poloniex.com/public?command=returnChartData&currencyPair={}&start={}&end={}&resolution=auto'.format(pair,
                                                                                                           int(start.timestamp()),
                                                                                                           int(end.timestamp()))
+    print(url)
     df = pd.read_json(url)
     df.date = pd.to_datetime(df.date)
     df.set_index(['date'], inplace=True)
