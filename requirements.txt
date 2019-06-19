@@ -9,7 +9,7 @@ holoviews
 ccxt
 bt
 seaborn
-pyfolio
+sqlalchemy
 bokeh
 statsmodels
 ffn
