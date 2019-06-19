@@ -1,6 +1,7 @@
 # Created by .ignore support plugin (hsz.mobi)
 
 .idea/
+.mypy_cache/
 
 ### IPythonNotebook template
 # Temporary data
